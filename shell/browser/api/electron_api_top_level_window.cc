@@ -1096,7 +1096,7 @@ void TopLevelWindow::ResetBrowserViews() {
         !browser_view.IsEmpty()) {
       // There's a chance that the BrowserView may have been reparented - only
       // reset if the owner window is *this* window.
-      if (browser_view->web_contents()) {
+      if (owner_window && owner_window == window_.get()) {
         auto* owner_window = browser_view->web_contents()->owner_window();
         if (owner_window == window_.get()) {
           browser_view->web_contents()->SetOwnerWindow(nullptr);
